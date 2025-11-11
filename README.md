@@ -22,7 +22,9 @@
 1. 不支持snapshot版本Gradle（因为国内大部分镜像源没有镜像）
 2. 对于wrapper安装加速无能为例（若需要加速可以看下方的使用建议部分 ）
 3. 若需要更换gradle-src下载源可以通过设置环境变量gradle.src.base来进行修改
-   例：gradle.src.base=https://mirrors.cloud.tencent.com/gradle
+    ```text
+    gradle.src.base=https://mirrors.cloud.tencent.com/gradle
+    ```
 
 ### 使用建议
 
