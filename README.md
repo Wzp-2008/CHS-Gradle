@@ -72,3 +72,5 @@
     systemProp.https.proxyHost=127.0.0.1
     systemProp.https.proxyPort=7890
     ````
+
+3. 如果github下载速度过慢可以去[国内镜像](https://wzpmc.cn:3000/wzp/CHS-Gradle/releases)下
