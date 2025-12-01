@@ -31,31 +31,35 @@
 1. 若需要让gradle项目的依赖/插件使用国内源下载可以使用如下脚本：
 
     ````groovy
-    //阿里云gradle插件镜像仓库地址
-    final PLUGIN_SOURCE = "https://maven.aliyun.com/repository/gradle-plugin"
-    //阿里云maven镜像仓库地址
-    final PUBLIC_REPOSITORY = "https://maven.aliyun.com/repository/public"
-    gradle.settingsEvaluated { settings ->
-        settings.pluginManagement.repositories {
-            maven { url PLUGIN_SOURCE }
-            gradlePluginPortal()
-            mavenCentral()
-        }
-    }
-    allprojects { project ->
-        repositories {
-            maven { url PUBLIC_REPOSITORY }
-            google()
-            mavenCentral()
-        }
-        buildscript {
-            repositories {
-                maven { url PUBLIC_REPOSITORY }
-                google()
+        // 阿里云gradle插件镜像仓库地址
+        final PLUGIN_SOURCE = "https://maven.aliyun.com/repository/gradle-plugin"
+        // 阿里云maven镜像仓库地址
+        final PUBLIC_REPOSITORY = "https://maven.aliyun.com/repository/public"
+        // 阿里云google镜像仓库地址
+        final GOOGLE_REPOSITORY = "https://maven.aliyun.com/repository/google"
+        gradle.settingsEvaluated { settings ->
+            settings.pluginManagement.repositories {
+                maven { url PLUGIN_SOURCE }
+                gradlePluginPortal()
                 mavenCentral()
             }
         }
-    }
+        allprojects { project ->
+            repositories {
+                maven { url PUBLIC_REPOSITORY }
+                maven { url GOOGLE_REPOSITORY }
+                google()
+                mavenCentral()
+            }
+            buildscript {
+                repositories {
+                maven { url PUBLIC_REPOSITORY }
+                maven { url GOOGLE_REPOSITORY }
+                google()
+                mavenCentral()
+                }
+            }
+        }
     ````
 2. 若需要wrapper下载加速可以替换你项目下gradle/wrapper/gradle-wrapper.properties文件内的下载地址
     ````properties
